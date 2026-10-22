@@ -19,8 +19,8 @@ export async function getSurveys(): Promise<SurveyWithStats[]> {
       description: surveys.description,
       status: surveys.status,
       createdAt: surveys.createdAt,
-      questionCount: sql<number>`(SELECT count(*) FROM ${surveyQuestions} WHERE ${surveyQuestions}.surveyId = ${surveys}.id)`,
-      responseCount: sql<number>`(SELECT count(DISTINCT ${surveyResponses}.createdAt) FROM ${surveyResponses} WHERE ${surveyResponses}.surveyId = ${surveys}.id)`,
+      questionCount: sql<number>`(SELECT count(*) FROM survey_questions WHERE survey_questions.survey_id = surveys.id)`,
+      responseCount: sql<number>`(SELECT count(DISTINCT created_at) FROM survey_responses WHERE survey_responses.survey_id = surveys.id)`,
     })
     .from(surveys)
     .orderBy(desc(surveys.createdAt));
