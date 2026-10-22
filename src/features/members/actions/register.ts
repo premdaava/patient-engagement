@@ -102,9 +102,13 @@ export async function registerAction(
     };
   } catch (error) {
     console.error("Register action error:", error);
+    const detail = error instanceof Error ? error.message : "An unexpected error occurred.";
     return {
       success: false,
-      message: "An unexpected error occurred during registration. Please try again.",
+      message:
+        process.env.NODE_ENV === "development"
+          ? `Registration failed: ${detail}`
+          : "An unexpected error occurred during registration. Please try again.",
       fields: {
         firstName,
         lastName,

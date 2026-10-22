@@ -71,9 +71,13 @@ export async function loginAction(
     };
   } catch (error) {
     console.error("Login action error:", error);
+    const detail = error instanceof Error ? error.message : "An unexpected error occurred.";
     return {
       success: false,
-      message: "An unexpected error occurred. Please try again.",
+      message:
+        process.env.NODE_ENV === "development"
+          ? `Login failed: ${detail}`
+          : "An unexpected error occurred. Please try again.",
       fields: { email },
     };
   }
