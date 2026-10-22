@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface, #ffffff);
+  border-right: 1px solid var(--color-border, #e2e8f0);
+  width: 320px;
+  min-width: 320px;
+  height: calc(100vh - 100px);
+  overflow: hidden;
+}
+
+.searchBox {
+  padding: var(--space-4, 16px);
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+}
+
+.list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}

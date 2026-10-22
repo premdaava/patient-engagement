@@ -1,0 +1,67 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface, #ffffff);
+  border-left: 1px solid var(--color-border, #e2e8f0);
+  width: 300px;
+  min-width: 300px;
+  height: calc(100vh - 100px);
+  padding: var(--space-6, 24px);
+  gap: var(--space-6, 24px);
+  overflow-y: auto;
+}
+
+.avatarSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3, 12px);
+  text-align: center;
+  border-bottom: 1px solid var(--color-border, #f1f5f9);
+  padding-bottom: var(--space-6, 24px);
+}
+
+.avatarCircle {
+  width: 64px;
+  height: 64px;
+  border-radius: 9999px;
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--color-primary, #2563eb);
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text, #0f172a);
+}
+
+.sectionTitle {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text-muted, #94a3b8);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-2, 8px);
+}
+
+.infoGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1, 4px);
+  font-size: 0.875rem;
+}
+
+.infoLabel {
+  color: var(--color-text-muted, #64748b);
+  font-size: 0.8125rem;
+}
+
+.infoValue {
+  color: var(--color-text, #0f172a);
+  font-weight: 500;
+}
