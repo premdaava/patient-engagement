@@ -4,6 +4,8 @@ import { Suspense } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
+  UserCheck,
+  Calendar,
   LayoutDashboard,
   Megaphone,
   Mail,
@@ -20,6 +22,8 @@ import styles from "./Sidebar.module.css";
 
 const NAV_ITEMS = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/patients", label: "Patients", icon: UserCheck },
+  { href: "/appointments", label: "Appointments", icon: Calendar },
   { href: "/campaigns", label: "Campaigns", icon: Megaphone },
   { href: "/newsletters", label: "Newsletters", icon: Mail },
   { href: "/surveys", label: "Surveys", icon: ClipboardList },
@@ -28,6 +32,9 @@ const NAV_ITEMS = [
   { href: "/messages", label: "Messages", icon: MessageSquare },
   { href: "/members", label: "Members", icon: Users },
 ];
+
+
+
 
 interface SidebarProps {
   isCollapsed: boolean;

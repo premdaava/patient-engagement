@@ -15,11 +15,10 @@ export interface OpenDentalPatient {
   Zip?: string;
 }
 
-export async function getPatients(params?: { LName?: string; FName?: string; limit?: number }): Promise<OpenDentalPatient[]> {
+export async function getPatients(params?: { LName?: string; FName?: string }): Promise<OpenDentalPatient[]> {
   const queryParams = new URLSearchParams();
   if (params?.LName) queryParams.set("LName", params.LName);
   if (params?.FName) queryParams.set("FName", params.FName);
-  if (params?.limit) queryParams.set("limit", params.limit.toString());
 
   const queryString = queryParams.toString() ? `?${queryParams.toString()}` : "";
   return openDentalFetch<OpenDentalPatient[]>(`patients${queryString}`);
@@ -28,3 +27,4 @@ export async function getPatients(params?: { LName?: string; FName?: string; lim
 export async function getPatient(patNum: number): Promise<OpenDentalPatient> {
   return openDentalFetch<OpenDentalPatient>(`patients/${patNum}`);
 }
+
