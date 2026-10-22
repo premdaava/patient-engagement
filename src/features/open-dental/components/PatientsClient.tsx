@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Phone, Mail, Search } from "lucide-react";
+import { Search } from "lucide-react";
 // Remove unused User import
 
 import { Badge } from "@/components/ui/Badge";
