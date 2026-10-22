@@ -1,0 +1,69 @@
+.requestModal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: var(--space-4, 16px);
+}
+
+.modalCard {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: var(--radius-xl, 16px);
+  width: 100%;
+  max-width: 480px;
+  padding: var(--space-6, 24px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4, 16px);
+  box-shadow: var(--shadow-lg, 0 10px 25px rgba(0, 0, 0, 0.1));
+}
+
+.modalTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text, #0f172a);
+}
+
+.modalDescription {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary, #475569);
+  line-height: 1.5;
+}
+
+.typeOptions {
+  display: flex;
+  gap: var(--space-3, 12px);
+}
+
+.typeBtn {
+  flex: 1;
+  padding: var(--space-4, 16px);
+  border: 2px solid var(--color-border, #cbd5e1);
+  border-radius: var(--radius-lg, 12px);
+  background: var(--color-surface, #ffffff);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2, 8px);
+  font-weight: 500;
+  color: var(--color-text, #0f172a);
+  transition: all 0.2s ease;
+}
+
+.typeBtn.active {
+  border-color: var(--color-primary, #2563eb);
+  background: rgba(37, 99, 235, 0.04);
+  color: var(--color-primary, #2563eb);
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2, 8px);
+  margin-top: var(--space-2, 8px);
+}

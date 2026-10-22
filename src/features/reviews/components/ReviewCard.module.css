@@ -1,0 +1,80 @@
+.card {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: var(--radius-lg, 12px);
+  padding: var(--space-5, 20px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3, 12px);
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(0, 0, 0, 0.05));
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-4, 16px);
+}
+
+.authorInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.authorName {
+  font-weight: 600;
+  color: var(--color-text, #0f172a);
+  font-size: 1rem;
+}
+
+.metaInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3, 12px);
+  font-size: 0.8125rem;
+  color: var(--color-text-muted, #64748b);
+}
+
+.badgeList {
+  display: flex;
+  gap: var(--space-2, 8px);
+  align-items: center;
+}
+
+.comment {
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary, #334155);
+  line-height: 1.5;
+}
+
+.replySection {
+  background: var(--color-background, #f8fafc);
+  border-left: 3px solid var(--color-primary, #2563eb);
+  border-radius: 0 var(--radius-md, 8px) var(--radius-md, 8px) 0;
+  padding: var(--space-3, 12px) var(--space-4, 16px);
+  margin-top: var(--space-2, 8px);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.replyTitle {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-primary, #2563eb);
+}
+
+.replyText {
+  font-size: 0.875rem;
+  color: var(--color-text, #0f172a);
+}
+
+.footerActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2, 8px);
+  margin-top: var(--space-2, 8px);
+  padding-top: var(--space-3, 12px);
+  border-top: 1px solid var(--color-border, #f1f5f9);
+}

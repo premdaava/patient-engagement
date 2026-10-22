@@ -5,7 +5,9 @@ import {
   integer,
   timestamp,
   pgEnum,
+  boolean,
 } from "drizzle-orm/pg-core";
+
 import { members } from "./members";
 
 export const reviewSourceEnum = pgEnum("review_source", [
@@ -31,6 +33,9 @@ export const reviews = pgTable("reviews", {
   source: reviewSourceEnum("source").notNull().default("internal"),
   status: reviewStatusEnum("status").notNull().default("pending"),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  replyText: text("reply_text"),
+  isFeatured: boolean("is_featured").notNull().default(false),
+
 });
 
 export type Review = typeof reviews.$inferSelect;
