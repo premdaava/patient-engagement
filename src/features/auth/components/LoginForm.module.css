@@ -1,0 +1,52 @@
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+.loginFormAlert {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  background-color: var(--color-danger-subtle);
+  color: var(--color-danger);
+  border: 1px solid var(--color-danger);
+}
+
+.loginFormInput {
+  width: 100%;
+  height: 38px;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.loginFormInput:focus {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-focus);
+}
+
+.loginFormInput:disabled {
+  background-color: var(--color-gray-100);
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.loginFormInputError {
+  border-color: var(--color-danger);
+}
+
+.loginFormInputError:focus {
+  box-shadow: 0 0 0 3px var(--color-danger-subtle);
+}
+
+.loginFormSubmit {
+  width: 100%;
+  margin-top: var(--space-2);
+}
