@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Phone, Mail, Search, User } from "lucide-react";
+import { Phone, Mail, Search } from "lucide-react";
+// Remove unused User import
+
 import { Badge } from "@/components/ui/Badge";
 import { Input } from "@/components/ui/Input";
 import { OpenDentalPatient } from "@/lib/open-dental";
@@ -49,58 +51,53 @@ export function PatientsClient({ patients }: PatientsClientProps) {
             No patients found matching your search.
           </div>
         ) : (
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: 16 }}>
-            {filteredPatients.map((p) => {
-              const phone = p.WirelessPhone || p.HmPhone || "No phone";
-              return (
-                <div
-                  key={p.PatNum}
-                  style={{
-                    background: "var(--color-background, #f8fafc)",
-                    border: "1px solid var(--color-border, #e2e8f0)",
-                    borderRadius: 10,
-                    padding: 20,
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: 12,
-                  }}
-                >
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-                    <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-                      <div style={{ width: 44, height: 44, borderRadius: "50%", background: "rgba(37, 99, 235, 0.1)", color: "var(--color-primary, #2563eb)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700 }}>
-                        {p.FName[0]}{p.LName[0]}
-                      </div>
-                      <div>
-                        <div style={{ fontWeight: 600, color: "var(--color-text, #0f172a)", fontSize: "1rem" }}>
-                          {p.FName} {p.LName}
+          <div style={{ overflowX: "auto" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left", fontSize: "0.9375rem" }}>
+              <thead>
+                <tr style={{ borderBottom: "2px solid var(--color-border, #e2e8f0)", color: "var(--color-text-secondary, #64748b)", fontSize: "0.8125rem", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                  <th style={{ padding: "12px 16px" }}>PatNum</th>
+                  <th style={{ padding: "12px 16px" }}>Patient Name</th>
+                  <th style={{ padding: "12px 16px" }}>Phone</th>
+                  <th style={{ padding: "12px 16px" }}>Email</th>
+                  <th style={{ padding: "12px 16px" }}>Birthdate</th>
+                  <th style={{ padding: "12px 16px" }}>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredPatients.map((p) => {
+                  const phone = p.WirelessPhone || p.HmPhone || p.WkPhone || "No phone";
+                  return (
+                    <tr key={p.PatNum} style={{ borderBottom: "1px solid var(--color-border, #f1f5f9)" }}>
+                      <td style={{ padding: "14px 16px", fontWeight: 600, color: "var(--color-text, #0f172a)" }}>
+                        #{p.PatNum}
+                      </td>
+                      <td style={{ padding: "14px 16px" }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                          <div style={{ width: 32, height: 32, borderRadius: "50%", background: "var(--color-primary-subtle, #eef6fb)", color: "var(--color-primary, #1e7db0)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 600, fontSize: "0.8125rem" }}>
+                            {p.FName[0]}{p.LName[0]}
+                          </div>
+                          <span style={{ fontWeight: 600, color: "var(--color-text, #0f172a)" }}>
+                            {p.FName} {p.LName}
+                          </span>
                         </div>
-                        <div style={{ fontSize: "0.75rem", color: "var(--color-text-muted, #94a3b8)" }}>
-                          PatNum #{p.PatNum}
-                        </div>
-                      </div>
-                    </div>
-                    <Badge variant="success">Active</Badge>
-                  </div>
-
-                  <div style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: "0.875rem", color: "var(--color-text-secondary, #64748b)", borderTop: "1px solid var(--color-border, #e2e8f0)", paddingTop: 12 }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                      <Phone size={14} color="var(--color-primary, #2563eb)" />
-                      <span>{phone}</span>
-                    </div>
-                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                      <Mail size={14} color="var(--color-primary, #2563eb)" />
-                      <span>{p.Email || "No email on file"}</span>
-                    </div>
-                    {p.Birthdate && (
-                      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                        <span style={{ fontWeight: 500, fontSize: "0.75rem", background: "#e2e8f0", padding: "2px 6px", borderRadius: 4 }}>DOB</span>
-                        <span>{p.Birthdate}</span>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
+                      </td>
+                      <td style={{ padding: "14px 16px", color: "var(--color-text-secondary, #475569)" }}>
+                        {phone}
+                      </td>
+                      <td style={{ padding: "14px 16px", color: "var(--color-text-secondary, #475569)" }}>
+                        {p.Email || "No email"}
+                      </td>
+                      <td style={{ padding: "14px 16px", color: "var(--color-text-secondary, #475569)" }}>
+                        {p.Birthdate || "—"}
+                      </td>
+                      <td style={{ padding: "14px 16px" }}>
+                        <Badge variant="success">Active</Badge>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
         )}
       </div>
