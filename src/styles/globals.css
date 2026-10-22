@@ -66,7 +66,7 @@
   --color-gray-800: #343a40;
   --color-gray-900: #212529;
 
-  /* Surface / text / border */
+  /* Surface / text / border (forced light theme) */
   --color-bg:              #f4f6f8;
   --color-surface:         #ffffff;
   --color-surface-raised:  #ffffff;
@@ -80,6 +80,7 @@
   --color-text-on-primary: #ffffff;
   --color-link:            var(--color-primary);
   --color-link-hover:      var(--color-primary-hover);
+
 
   /* Typography */
   --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont,
@@ -163,40 +164,9 @@
   --content-max-width: 1280px;
 }
 
-/* ----- DARK THEME ------------------------------------------- */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg:              #0f1117;
-    --color-surface:         #1a1f2e;
-    --color-surface-raised:  #222739;
-    --color-surface-overlay: #2a3045;
-    --color-border:          rgba(255, 255, 255, 0.10);
-    --color-border-strong:   rgba(255, 255, 255, 0.20);
-    --color-text:            #e8eaf0;
-    --color-text-secondary:  #9ba3b8;
-    --color-text-muted:      #666e88;
-    --color-text-inverse:    #0f1117;
-    --color-primary:         var(--color-primary-400);
-    --color-primary-hover:   var(--color-primary-300);
-    --color-primary-subtle:  rgba(61, 150, 200, 0.12);
-    --color-secondary:       #7a8fa8;
-    --color-secondary-subtle:rgba(122, 143, 168, 0.12);
-    --color-accent:          var(--color-accent-300);
-    --color-accent-subtle:   rgba(249, 188, 88, 0.10);
-    --color-success:         #25b96e;
-    --color-success-subtle:  rgba(29, 158, 92, 0.12);
-    --color-warning:         #e0a800;
-    --color-warning-subtle:  rgba(194, 139, 0, 0.12);
-    --color-danger:          #f04438;
-    --color-danger-subtle:   rgba(217, 48, 37, 0.12);
-    --shadow-sm:  0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.2);
-    --shadow-md:  0 4px 6px rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0, 0, 0, 0.2);
-    --shadow-lg:  0 10px 15px rgba(0, 0, 0, 0.4), 0 4px 6px rgba(0, 0, 0, 0.2);
-    --shadow-focus: 0 0 0 3px rgba(61, 150, 200, 0.4);
-  }
+/* ----- DARK THEME REMOVED (Light Theme Enforced) -------------- */
+html { color-scheme: light; }
 
-  html { color-scheme: dark; }
-}
 
 /* =============================================================
    CSS RESET
