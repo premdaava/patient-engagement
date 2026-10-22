@@ -1,1 +1,1 @@
-export * from "./RegisterForm";
+export * from "./MembersClient";
