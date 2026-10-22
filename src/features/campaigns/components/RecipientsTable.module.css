@@ -1,0 +1,31 @@
+.recipientsTableContainer {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  width: 100%;
+}
+
+.recipientName {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+}
+
+.recipientContact {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.recipientDate {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.recipientsEmpty {
+  padding: var(--space-8);
+  text-align: center;
+  color: var(--color-text-muted);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}

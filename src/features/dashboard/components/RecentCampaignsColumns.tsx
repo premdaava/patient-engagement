@@ -7,8 +7,10 @@ const STATUS_VARIANTS: Record<DashboardCampaign["status"], BadgeVariant> = {
   draft: "default",
   scheduled: "warning",
   running: "primary",
+  paused: "danger",
   completed: "success",
 };
+
 
 export const campaignColumns: Column<DashboardCampaign>[] = [
   {

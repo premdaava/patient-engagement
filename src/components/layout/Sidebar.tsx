@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -35,13 +36,21 @@ interface SidebarProps {
   onCloseMobile: () => void;
 }
 
-export function Sidebar({
+export function Sidebar(props: SidebarProps) {
+  return (
+    <Suspense fallback={<aside className={styles.sidebar} />}>
+      <SidebarContent {...props} />
+    </Suspense>
+  );
+}
+
+function SidebarContent({
   isCollapsed,
   onToggleCollapse,
   isOpenMobile,
   onCloseMobile,
 }: SidebarProps) {
-  const pathname = usePathname();
+  const pathname = usePathname() || "";
 
   return (
     <>
@@ -96,3 +105,6 @@ export function Sidebar({
     </>
   );
 }
+
+
+

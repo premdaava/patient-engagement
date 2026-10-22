@@ -1,0 +1,29 @@
+.campaignFilters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.campaignFiltersTabs {
+  flex: 1;
+  min-width: 280px;
+}
+
+.campaignFiltersSearch {
+  width: 280px;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .campaignFilters {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .campaignFiltersSearch {
+    width: 100%;
+  }
+}

@@ -14,6 +14,8 @@ async function seed() {
   const { campaigns } = await import("./schema/campaigns");
   const { reviews } = await import("./schema/reviews");
   const { conversations, messages } = await import("./schema/messaging");
+  const { emailTemplates } = await import("./schema/emailTemplates");
+  const { campaignRecipients } = await import("./schema/campaignRecipients");
 
   const demoEmail = "demo@careconnect.com";
   const demoPassword = "Password123!";
@@ -99,20 +101,59 @@ async function seed() {
     console.log(`✓ Created sample patient: ${patientB.firstName} ${patientB.lastName}`);
   }
 
-  // 4. Seed Sample Campaigns
-  const existingCampaigns = await db.select().from(campaigns);
-  if (existingCampaigns.length === 0) {
-    await db.insert(campaigns).values([
+  // 4. Seed Sample Templates
+  const existingTemplates = await db.select().from(emailTemplates);
+  let hygieneTemplate = existingTemplates[0];
+  if (!hygieneTemplate) {
+    const [t1] = await db
+      .insert(emailTemplates)
+      .values({
+        name: "6-Month Hygiene Recall",
+        subject: "Time for your routine dental cleaning!",
+        body: "Hi {{firstName}}, our records indicate that you are due for your 6-month routine cleaning and dental examination. Regular hygiene visits prevent tooth decay and protect your smile. Please reply or call us to reserve your preferred appointment slot.",
+      })
+      .returning();
+    hygieneTemplate = t1;
+
+    await db.insert(emailTemplates).values([
       {
-        name: "6-Month Hygiene Recall SMS",
-        type: "sms",
-        status: "running",
+        name: "Teeth Whitening Spring Special",
+        subject: "Brighten your smile this spring with 25% off",
+        body: "Hi {{firstName}}, celebrate the new season with a brighter, whiter smile. For a limited time, get 25% off our in-office professional whitening sessions.",
       },
+      {
+        name: "Post-Treatment Care",
+        subject: "Post-op care instructions for your dental procedure",
+        body: "Hi {{firstName}}, we hope you are feeling comfortable after your visit today. Please review these essential post-op recovery recommendations.",
+      },
+    ]);
+    console.log("✓ Created 3 sample email templates");
+  }
+
+  // 5. Seed Sample Campaigns
+  const existingCampaigns = await db.select().from(campaigns);
+  let activeCampaign = existingCampaigns.find((c) => c.status === "running");
+  if (existingCampaigns.length === 0) {
+    const [c1] = await db
+      .insert(campaigns)
+      .values([
+        {
+          name: "6-Month Hygiene Recall SMS",
+          type: "sms",
+          status: "running",
+          templateId: hygieneTemplate?.id,
+        },
+      ])
+      .returning();
+    activeCampaign = c1;
+
+    await db.insert(campaigns).values([
       {
         name: "Teeth Whitening Spring Special",
         type: "email",
         status: "scheduled",
         scheduledAt: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000),
+        templateId: hygieneTemplate?.id,
       },
       {
         name: "Overdue Perio Treatment Follow-Up",
@@ -128,7 +169,34 @@ async function seed() {
     console.log("✓ Created 4 sample campaigns");
   }
 
-  // 5. Seed Sample Reviews
+  // 6. Seed Sample Campaign Recipients
+  const existingRecipients = await db.select().from(campaignRecipients);
+  if (existingRecipients.length === 0 && activeCampaign && patientA && patientB) {
+    const sentTime = new Date(Date.now() - 3 * 3600 * 1000);
+    const openedTime = new Date(Date.now() - 2 * 3600 * 1000);
+    const clickedTime = new Date(Date.now() - 1 * 3600 * 1000);
+
+    await db.insert(campaignRecipients).values([
+      {
+        campaignId: activeCampaign.id,
+        memberId: patientA.id,
+        status: "delivered",
+        sentAt: sentTime,
+        openedAt: openedTime,
+        clickedAt: clickedTime,
+      },
+      {
+        campaignId: activeCampaign.id,
+        memberId: patientB.id,
+        status: "delivered",
+        sentAt: sentTime,
+        openedAt: openedTime,
+      },
+    ]);
+    console.log("✓ Created sample campaign recipients");
+  }
+
+  // 7. Seed Sample Reviews
   const existingReviews = await db.select().from(reviews);
   if (existingReviews.length === 0 && patientA && patientB) {
     await db.insert(reviews).values([

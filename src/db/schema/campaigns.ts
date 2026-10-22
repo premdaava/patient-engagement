@@ -5,6 +5,7 @@ export const campaignStatusEnum = pgEnum("campaign_status", [
   "draft",
   "scheduled",
   "running",
+  "paused",
   "completed",
 ]);
 

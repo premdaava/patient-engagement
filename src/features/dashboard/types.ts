@@ -10,7 +10,7 @@ export interface DashboardCampaign {
   id: string;
   name: string;
   type: "email" | "sms";
-  status: "draft" | "scheduled" | "running" | "completed";
+  status: "draft" | "scheduled" | "running" | "paused" | "completed";
   scheduledAt: Date | null;
   createdAt: Date;
 }
