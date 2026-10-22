@@ -20,7 +20,7 @@ export async function getSurveys(): Promise<SurveyWithStats[]> {
       status: surveys.status,
       createdAt: surveys.createdAt,
       questionCount: sql<number>`(SELECT count(*) FROM ${surveyQuestions} WHERE ${surveyQuestions}.surveyId = ${surveys}.id)`,
-      responseCount: sql<number>`(SELECT count(DISTINCT ${surveyResponses}.surveyId || '-' || ${surveyResponses}.createdAt) FROM ${surveyResponses} WHERE ${surveyResponses}.surveyId = ${surveys}.id)`,
+      responseCount: sql<number>`(SELECT count(DISTINCT ${surveyResponses}.createdAt) FROM ${surveyResponses} WHERE ${surveyResponses}.surveyId = ${surveys}.id)`,
     })
     .from(surveys)
     .orderBy(desc(surveys.createdAt));
