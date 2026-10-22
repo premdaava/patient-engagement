@@ -1,0 +1,102 @@
+.unreadMessagesCard {
+  width: 100%;
+}
+
+.unreadMessagesHeaderWrapper {
+  padding: var(--space-4) var(--space-5) var(--space-2) var(--space-5);
+}
+
+.unreadMessagesLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.unreadMessagesLink:hover {
+  text-decoration: underline;
+}
+
+.unreadMessagesEmpty {
+  padding: var(--space-4);
+}
+
+.unreadMessagesList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.unreadMessagesItem {
+  border-top: 1px solid var(--color-border);
+  transition: background-color var(--transition-fast);
+}
+
+.unreadMessagesItem:hover {
+  background-color: var(--color-gray-50);
+}
+
+.unreadMessagesItemLink {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-5);
+  text-decoration: none;
+  color: inherit;
+}
+
+.unreadMessagesContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.unreadMessagesMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: 2px;
+}
+
+.unreadMessagesSender {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.unreadMessagesTime {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.unreadMessagesBody {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+}
+
+.unreadMessagesSkeletonList {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-4);
+  gap: var(--space-3);
+}
+
+.unreadMessagesSkeletonItem {
+  height: 52px;
+  background-color: var(--color-gray-100);
+  border-radius: var(--radius-md);
+}

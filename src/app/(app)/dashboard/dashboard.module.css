@@ -1,0 +1,19 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  width: 100%;
+}
+
+.dashboardWidgetsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .dashboardWidgetsGrid {
+    grid-template-columns: 1fr;
+  }
+}

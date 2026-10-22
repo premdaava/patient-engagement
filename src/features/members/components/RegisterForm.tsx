@@ -18,7 +18,7 @@ export function RegisterForm() {
 
   useEffect(() => {
     if (state?.success) {
-      router.push("/ui-kit");
+      router.push("/dashboard");
       router.refresh();
     }
   }, [state?.success, router]);

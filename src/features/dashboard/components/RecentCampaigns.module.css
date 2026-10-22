@@ -1,0 +1,32 @@
+.recentCampaignsCard {
+  width: 100%;
+  overflow: hidden;
+}
+
+.recentCampaignsHeaderWrapper {
+  padding: var(--space-4) var(--space-5) 0 var(--space-5);
+}
+
+.recentCampaignsName {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+}
+
+.recentCampaignsDate {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.recentCampaignsLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.recentCampaignsLink:hover {
+  text-decoration: underline;
+}
