@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Card } from "@/components/ui/Card";
 import { EmailTemplate } from "@/db/schema/emailTemplates";
+import { TemplatePicker } from "@/features/email-templates/components";
 import { AudienceMember, CreateCampaignInput } from "../types";
 import { createCampaign } from "../actions/createCampaign";
 import { WizardStepper } from "./WizardStepper";
@@ -32,8 +33,6 @@ export function CampaignWizard({ templates, audience }: CampaignWizardProps) {
   const [templateId, setTemplateId] = useState<string>(templates[0]?.id || "");
   const [scheduleType, setScheduleType] = useState<"immediate" | "scheduled">("immediate");
   const [scheduledAt, setScheduledAt] = useState("");
-
-  const selectedTemplate = templates.find((t) => t.id === templateId);
 
   async function handleComplete() {
     setIsSubmitting(true);
@@ -79,9 +78,7 @@ export function CampaignWizard({ templates, audience }: CampaignWizardProps) {
         {currentStep === 3 && (
           <div className={styles.stepPane}>
             <h2>Template</h2>
-            <select className={styles.select} value={templateId} onChange={(e) => setTemplateId(e.target.value)}>
-              {templates.map((t) => (<option key={t.id} value={t.id}>{t.name}</option>))}
-            </select>
+            <TemplatePicker templates={templates} selectedId={templateId} onChange={setTemplateId} />
           </div>
         )}
         {currentStep === 4 && (
@@ -116,3 +113,4 @@ export function CampaignWizard({ templates, audience }: CampaignWizardProps) {
     </div>
   );
 }
+
